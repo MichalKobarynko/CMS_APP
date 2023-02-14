@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Filters;
+using Serilog.Sinks.SystemConsole.Themes;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,20 +21,6 @@ namespace CMS_APP
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-
-            using (var scope = host.Services.CreateScope())
-            {
-                try
-                {
-                    int zero = 0;
-                    int res = 100 / zero;
-                }
-                catch(DivideByZeroException ex)
-                {
-                    Log.Error("B³¹d podczas dzielenia przez zero {0} {1} {2} {3}", ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
-                }
-            }
-
             host.Run();
         }
 
@@ -50,6 +37,7 @@ namespace CMS_APP
                    .Enrich.WithProperty("UserName", Environment.UserName)
                    .Enrich.WithProperty("ProcessId", Process.GetCurrentProcess().Id)
                    .Enrich.WithProperty("ProcessName", Process.GetCurrentProcess().ProcessName)
+                   .WriteTo.Console(theme: AnsiConsoleTheme.Code)
                    .WriteTo.File(formatter: new CustomTextFormatter(),
                                 path: Path.Combine(hostingContext.HostingEnvironment.ContentRootPath + $"/Logs/", $"load_error_{DateTime.Now:yyyyMMdd}.txt"))
                    .ReadFrom.Configuration(hostingContext.Configuration))

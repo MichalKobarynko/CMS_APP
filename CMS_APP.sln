@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS_APP", "CMS_APP\CMS_APP.csproj", "{4983570F-D4DD-46A5-94D7-1FFCF66D3312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMS_APP", "CMS_APP\CMS_APP.csproj", "{4983570F-D4DD-46A5-94D7-1FFCF66D3312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingService", "LoggingService\LoggingService.csproj", "{40945340-72DC-4507-8F7E-DB563DD6FC17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingService", "LoggingService\LoggingService.csproj", "{40945340-72DC-4507-8F7E-DB563DD6FC17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataService", "DataService\DataService.csproj", "{8C23C212-2904-4805-BF1F-7958873418CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{40945340-72DC-4507-8F7E-DB563DD6FC17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40945340-72DC-4507-8F7E-DB563DD6FC17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40945340-72DC-4507-8F7E-DB563DD6FC17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C23C212-2904-4805-BF1F-7958873418CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C23C212-2904-4805-BF1F-7958873418CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C23C212-2904-4805-BF1F-7958873418CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C23C212-2904-4805-BF1F-7958873418CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
