@@ -8,6 +8,10 @@ namespace CMS_APP.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public ApplicationUser()
+        {
+        }
+
         public string Notes { get; set; }
         public string DisplayName { get; set; }
         public string FirstName { get; set; }

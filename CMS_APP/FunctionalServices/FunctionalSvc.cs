@@ -17,11 +17,11 @@ namespace CMS_APP.FunctionalServices
         public FunctionalSvc(
             IOptions<AdminUserOptions> adminUserOptions,
             IOptions<AppUserOptions> appUserOptions,
-            IOptions<UserManager<ApplicationUser>> userManager)
+            UserManager<ApplicationUser> userManager)
         {
             _adminUserOptions = adminUserOptions.Value;
             _appUserOptions = appUserOptions.Value;
-            _userManager = userManager.Value;
+            _userManager = userManager;
         }
 
         public async Task CreateDefaultAdminUser()
@@ -50,7 +50,7 @@ namespace CMS_APP.FunctionalServices
                 var result = await _userManager.CreateAsync(adminUser, _adminUserOptions.Password);
                 if(result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(adminUser, "Administrator");
+                    //await _userManager.AddToRoleAsync(adminUser, "Administrator");
                     Log.Information("Admin User Created {UserName}", adminUser.UserName);
                 }
                 else
@@ -92,7 +92,7 @@ namespace CMS_APP.FunctionalServices
             var result = await _userManager.CreateAsync(appUser, _adminUserOptions.Password);
             if (result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(appUser, "Administrator");
+                //await _userManager.AddToRoleAsync(appUser, "Customer");
                 Log.Information("Admin User Created {UserName}", appUser.UserName);
             }
             else

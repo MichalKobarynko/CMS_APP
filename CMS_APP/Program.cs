@@ -1,3 +1,5 @@
+using CMS_APP.Data;
+using CMS_APP.FunctionalServices;
 using LoggingService;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +23,29 @@ namespace CMS_APP
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var service = scope.ServiceProvider;
+
+                try
+                {
+                    var context = service.GetRequiredService<ApplicationDbContext>();
+                    var dpContext = service.GetRequiredService<DataProtectionKeysContext>();
+                    var functionSvc = service.GetRequiredService<IFunctionalSvc>();
+
+                    DbContextInitializer.Initializer(
+                        dpContext,
+                        context,
+                        functionSvc).Wait();
+                }
+                catch(Exception ex)
+                {
+                    Log.Error("An error occurred while seeding the database {Error} {StackTrace} {InnerException} {Source}",
+                        ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                }
+            }
+
             host.Run();
         }
 
